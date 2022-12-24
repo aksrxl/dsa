@@ -7,52 +7,82 @@ find a continuous sub-array which adds
 to a given number S and return the left and right index(1-based indexing) of that subarray.
 */
 
-//Solution class
-public static class SubArrayMaxSum
+
+public class SubArrayMaxSum
 {
-    public static List<int> SubArraySum(int[] arr, int n, int s)
+    /* Algo
+     : 1. loop from index 1 till n.
+       2. keep a track of the starting point from where you are adding to get sum.
+       3. keep a check if temp sum has exceeded the required sum.
+       4. keep subtracting the left most element from sum and incrementing the starting element , 
+          until the sum is greater than required sum. 
+       5. check if the sum is equal to required sum.
+    */
+    public List<int> SubArraySum(int[] arr, int n, int requiredSum)
     {
-        var list = new List<int>();
-        int sum = arr[0]; // assigning sum as 1st element
-        int start = 0; // setting starting point as 0
-        for (int i = 1; i <= arr.Length; i++)
-        { // remember we are starting from 1
-            while (sum > s && start < i - 1)
+        var currentSum = arr[0];
+        var startingPoint = 0;
+
+        // till i<=n; equals to because we are incrementing the sum post check. 
+        // so we want to check for the last number as well.
+        // but we do not want to increment the sum of nth index coz it will be out of bound.
+        //thats why the check at line 33 
+        for (int i = 1; i <= n; i++)
+        {
+            while (currentSum > requiredSum && startingPoint < i - 1)
             {
-                sum -= arr[start];   // remove 1st ele if sum exceeds;
-                start++;// move starting point by 1 ahead
+                currentSum = currentSum - arr[startingPoint];
+                startingPoint++;
             }
-            if (sum == s)
-            {
-                return new List<int> { start + 1, i }; // 1 based index therefore +1
-            }
-            if (i < n)
-            {
-                sum += arr[i]; // we have not reached to sum so add nxtelement to sum
-            }
+
+            if (currentSum == requiredSum)
+                return new List<int> { startingPoint + 1, i };
+
+            if (i < n) // this will prevent outofbound exception for loop since we are running loop till n 
+                currentSum = currentSum + arr[i];
         }
-        return new List<int> { -1 };// we are here coz nothing has been returned;
+        return new List<int> { -1 };
     }
 }
-
-//TestClass
+//----------------------------------------------------
 [TestClass]
 public class TestSubArrayMaxSum
 {
     [TestMethod]
-    public void TestSubArrayMaxSumValid()
+    [DataRow(1, 5, 12, "1 2 3 7 5")]
+    [DataRow(2, 42, 468, "135 101 170 125 79 159 163 65 106 146 82 28 162 92 196 143 28 37 192 5 103 154 93 183 22 117 119 96 48 127 172 139 70 113 68 100 36 95 104 12 123 134")]
+    public void TestSubArrayMaxSumValid1(int caseNumber, int numberOfElements, int requiredSum, string elements)
     {
         //Arrange
-        int requiredSum = 12;
-        var arr = new int[] { 1, 2, 3, 7, 5 };
+        var stringArr = elements.Split(' ');
+        var arr = new int[42];
+        for (int i = 0; i < numberOfElements; i++)
+        {
+            arr[i] = Convert.ToInt32(stringArr[i]);
+        }
 
         //Act
-        var subArrayMaxSum = SubArrayMaxSum.SubArraySum(arr, 5, requiredSum);
+        var obj = new SubArrayMaxSum();
+        var subArrayMaxSum = obj.SubArraySum(arr, numberOfElements, requiredSum);
 
         //Act
-        // the required sum is met between 2nd and 4th element.
-        Assert.AreEqual(subArrayMaxSum.Count, 2);
-        Assert.AreEqual(subArrayMaxSum[0], 2);
-        Assert.AreEqual(subArrayMaxSum[1], 4);
+
+        switch (caseNumber)
+        {
+            case 1:
+                {
+                    Assert.AreEqual(2, subArrayMaxSum.Count);
+                    Assert.AreEqual(2, subArrayMaxSum[0]);
+                    Assert.AreEqual(4, subArrayMaxSum[1]);
+                    break;
+                }
+            case 2:
+                {
+                    Assert.AreEqual(2, subArrayMaxSum.Count);
+                    Assert.AreEqual(38, subArrayMaxSum[0]);
+                    Assert.AreEqual(42, subArrayMaxSum[1]);
+                    break;
+                }
+        }
     }
 }
