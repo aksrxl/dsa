@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ArrayQuestions;
 /*
-//https://practice.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1
+https://practice.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1
 Given an unsorted array A of size N that contains only non-negative integers, 
 find a continuous sub-array which adds 
 to a given number S and return the left and right index(1-based indexing) of that subarray.
@@ -55,7 +55,7 @@ public class TestSubArrayMaxSum
     {
         //Arrange
         var stringArr = elements.Split(' ');
-        var arr = new int[42];
+        var arr = new int[numberOfElements];
         for (int i = 0; i < numberOfElements; i++)
         {
             arr[i] = Convert.ToInt32(stringArr[i]);
