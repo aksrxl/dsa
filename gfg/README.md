@@ -10,3 +10,6 @@ I will try my best to give credit to the question's sources.
 
 The solutions given in this repository are for my own understanding, and they do not guarantee to be the best solution.
 Do your own research for the most optimal solutions.
+
+## Array
+1. [Subarray with given sum](https://github.com/aksrxl/dsa/blob/main/gfg/mustDoQuestions/array/ArrayQuestions/1.SubArrayMaxSum.cs)
