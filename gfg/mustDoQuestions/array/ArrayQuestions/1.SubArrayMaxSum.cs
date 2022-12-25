@@ -44,14 +44,14 @@ public class SubArrayMaxSum
         return new List<int> { -1 };
     }
 }
-//----------------------------------------------------
+
 [TestClass]
 public class TestSubArrayMaxSum
 {
     [TestMethod]
     [DataRow(1, 5, 12, "1 2 3 7 5")]
     [DataRow(2, 42, 468, "135 101 170 125 79 159 163 65 106 146 82 28 162 92 196 143 28 37 192 5 103 154 93 183 22 117 119 96 48 127 172 139 70 113 68 100 36 95 104 12 123 134")]
-    public void TestSubArrayMaxSumValid1(int caseNumber, int numberOfElements, int requiredSum, string elements)
+    public void TestSubArrayMaxSumValid(int caseNumber, int numberOfElements, int requiredSum, string elements)
     {
         //Arrange
         var stringArr = elements.Split(' ');
