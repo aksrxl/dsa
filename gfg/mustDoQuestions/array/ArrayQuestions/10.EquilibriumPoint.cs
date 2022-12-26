@@ -21,7 +21,6 @@ Variation of binary search.
 */
 public class EquilibriumPoint
 {
-    public int Count = 0;
     public int GetPoint(int[] arr, int n)
     {
         if (n == 1)
