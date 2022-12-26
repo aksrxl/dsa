@@ -50,7 +50,7 @@ public class TestCountTriplets
     [DataRow(4, "1 5 3 2", 2)] // 1+2=3, 3+2=5
     [DataRow(5, "1 2 3 4 5 ", 4)] // 1+2=3, 1+3=4, 1+4=5, 2+3=5 
 
-    public void TestSubArrayMaxSumValid1(int numberOfElements, string elements, int expectedOutput)
+    public void TestGetCount(int numberOfElements, string elements, int expectedOutput)
     {
         //Arrange
         var stringArr = elements.Split(' ');

@@ -42,7 +42,7 @@ public class KadaneAlgorithm
 }
 
 [TestClass]
-public class TestMaxSubArraySum
+public class TestKadaneAlgorithm
 {
     [TestMethod]
     [DataRow(5, "1 2 3 -2 5", 9)] // 1+2+3+(-1)+5 = 9

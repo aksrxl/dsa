@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ArrayQuestions;
 
 /*
-https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1
+https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
 Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N.
 Find the missing element.
 
@@ -29,6 +29,7 @@ public class MergeTwoSortedArray
         int j = 0;
         int k = 0;
 
+        // filling in arr in a sorted way
         while (i < s && j < t)
         {
             if (a[i] < b[j])
@@ -44,13 +45,14 @@ public class MergeTwoSortedArray
                 j++;
             }
         }
+        // incase a has pending items
         while (i < s)
         {
             arr[k] = a[i];
             i++;
             k++;
         }
-
+        //incase b has pending items
         while (j < t)
         {
             arr[k] = b[j];
@@ -79,9 +81,9 @@ public class MergeTwoSortedArray
 public class TestMergeTwoSortedArray
 {
     [TestMethod]
-    [DataRow(2, "10 12", 3, "5 18 20")]
-    [DataRow(4, "1 3 5 7", 5, "0 2 6 8 9")]
-    public void TestMissingNumber(int s, string sElements, int t, string tElements)
+    [DataRow(2, "10 12", 3, "5 18 20", "5 10 12 18 20")]
+    [DataRow(4, "1 3 5 7", 5, "0 2 6 8 9", "0 1 2 3 5 6 7 8 9")]
+    public void TestMerge(int s, string sElements, int t, string tElements, string expectedOutputString)
     {
         //Arrange
         var stringArr1 = sElements.Split(' ');
@@ -103,6 +105,7 @@ public class TestMergeTwoSortedArray
         obj.Merge(a, b, s, t);
 
         //Assert
-        //TODO
+        var outputstring = string.Join(' ', a, b);
+        Assert.AreEqual(expectedOutputString, outputstring);
     }
 }
