@@ -25,7 +25,6 @@ public class StockBuyAndSell
         var listOfList = new List<List<int>>();
 
         var buyingPoint = -1;
-        var sellingPoint = -1;
         for (int i = 0; i < n; i++)
         {
             if (i == 0)
@@ -42,7 +41,6 @@ public class StockBuyAndSell
                 {
                     listOfList.Add(new List<int> { buyingPoint, i });
                     buyingPoint = -1;
-                    sellingPoint = -1;
                 }
             }
             // for mid value check for plateue as well , since it can be sold if plateau occurs, so that we can buy on the next plateue value
@@ -50,7 +48,6 @@ public class StockBuyAndSell
             {
                 listOfList.Add(new List<int> { buyingPoint, i });
                 buyingPoint = -1;
-                sellingPoint = -1;
             }
             // this is the plateau value we are buying at
             else if (arr[i] <= arr[i - 1] && arr[i] < arr[i + 1])
