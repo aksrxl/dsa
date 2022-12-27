@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ArrayQuestions;
 
 /*
-https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
+https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
 Given a matrix of size r*c. Traverse the matrix in spiral form.
 
 Input:
@@ -27,6 +27,8 @@ public class SpiralTraversalOfMatrix
         var numberOfElements = r * c;
         var list = new List<int>();
         var count = 0;
+
+        //Converting to 2d array
         for (int x = 0; x < r; x++)
         {
             for (int y = 0; y < c; y++)
@@ -90,10 +92,10 @@ public class TestSpiralTraversalOfMatrix
         listOfList.Add(new List<int> { 5, 6, 7, 8 });
         listOfList.Add(new List<int> { 9, 10, 11, 12 });
         listOfList.Add(new List<int> { 13, 14, 15, 16 });
+
         //Act
         var obj = new SpiralTraversalOfMatrix();
         var list = obj.Traverse(listOfList, 4, 4);
-
         var outputString = string.Join(' ', list);
 
         //Assert

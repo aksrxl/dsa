@@ -64,7 +64,6 @@ public class TestArrayZigZag
         //Act
         var obj = new ArrayZigZag();
         obj.Convert(arr, numberOfElements);
-
         var outputString = string.Join(' ', arr);
 
         //Assert
